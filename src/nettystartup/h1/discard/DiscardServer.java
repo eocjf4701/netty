@@ -34,8 +34,6 @@ final class DiscardServer {
             // 서버 채널이 닫힐 때까지 기다리는 작업을 수행
             f.channel().closeFuture().sync();
 
-            EmbeddedChannel ch =
-                    new EmbeddedChannel(null);
         } finally {
             // 그룹 내의 모든 이벤트 루프 스레드를 종료하고, 모든 연결이 정상적으로 종료될 때까지 대기
             workerGroup.shutdownGracefully();
