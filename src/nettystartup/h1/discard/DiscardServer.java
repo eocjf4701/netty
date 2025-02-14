@@ -4,6 +4,7 @@ package nettystartup.h1.discard;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
+import io.netty.channel.embedded.EmbeddedChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
@@ -32,6 +33,9 @@ final class DiscardServer {
             System.err.println("Ready for 0.0.0.0:8010");
             // 서버 채널이 닫힐 때까지 기다리는 작업을 수행
             f.channel().closeFuture().sync();
+
+            EmbeddedChannel ch =
+                    new EmbeddedChannel(null);
         } finally {
             // 그룹 내의 모든 이벤트 루프 스레드를 종료하고, 모든 연결이 정상적으로 종료될 때까지 대기
             workerGroup.shutdownGracefully();

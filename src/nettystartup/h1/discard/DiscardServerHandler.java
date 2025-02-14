@@ -14,6 +14,7 @@ class DiscardServerHandler extends ChannelInboundHandlerAdapter {
         ByteBuf buf = (ByteBuf) msg;
         try {
             // discard
+            System.out.println("수신성공");
         } finally {
             // 메모리 반환
             buf.release();
